@@ -282,8 +282,10 @@ var __CGSpunk_Injected =
         if (!myAgent) return 'normal';
         let myFrames = gameManager.currentGameInfo.frames.filter(_ => _.agentId == myAgent.index);
         let info = myFrames[myFrames.length-1].gameInformation;
+        let summary = myFrames[myFrames.length-1].summary;
         if (info.includes('nvalid input')) return 'invalid';
         if (info.includes('Timeout:')) return 'timeout';
+        if (summary.includes('timeout!')) return 'timeout';
         return 'normal';
     }
 
